@@ -1,0 +1,18 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="RemoteClientUpdateConsole.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="CustomerGuid" Type="System.Guid" Scope="User">
+      <Value Profile="(Default)">fae93021-7048-41b7-8f46-468e63730a78</Value>
+    </Setting>
+    <Setting Name="AppDirectoryPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\AppUpdaterTesting\App</Value>
+    </Setting>
+    <Setting Name="CustomerName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">Customer ABC</Value>
+    </Setting>
+    <Setting Name="CentralizedUpdateWebApiBaseUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://apiurl</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

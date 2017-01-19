@@ -1,0 +1,136 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="UpdaterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm/ssdl">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="UpdaterKey" Type="varchar" MaxLength="50" />
+          <Property Name="AppVersion" Type="varchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" Nullable="false" />
+          <Property Name="LastUpdateCheck" Type="datetime" />
+          <Property Name="LastUpdateStart" Type="datetime" />
+          <Property Name="LastUpdateFinish" Type="datetime" />
+          <Property Name="LastUpdateFinishedWithErrors" Type="bit" />
+          <Property Name="DatabaseVersion" Type="varchar(max)" />
+          <Property Name="ServerOS" Type="varchar(max)" />
+          <Property Name="ServerMemory" Type="varchar(max)" />
+          <Property Name="CustomerName" Type="varchar(max)" />
+          <Property Name="ApplicationId" Type="int" />
+          <Property Name="AppKey" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="Applications">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="int" Nullable="false" />
+          <Property Name="ApplicationName" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="UpdaterModelStoreContainer">
+          <EntitySet Name="Customer" EntityType="Self.Customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Applications" EntityType="Self.Applications" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="UpdaterModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2006/04/edm">
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerGuid" Type="Guid" Nullable="false" />
+          <Property Name="UpdaterKey" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AppVersion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="Boolean" Nullable="false" />
+          <Property Name="LastUpdateCheck" Type="DateTime" Precision="3" />
+          <Property Name="DatabaseVersion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ServerOS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ServerMemory" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ApplicationId" Type="Int32" />
+          <Property Name="AppKey" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LastUpdateStart" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateFinish" Type="DateTime" Precision="3" />
+          <Property Name="LastUpdateFinishedWithErrors" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Application">
+          <Key>
+            <PropertyRef Name="ApplicationId" />
+          </Key>
+          <Property Name="ApplicationId" Type="Int32" Nullable="false" />
+          <Property Name="ApplicationName" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="UpdaterEntities">
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="Applications" EntityType="Self.Application" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="urn:schemas-microsoft-com:windows:storage:mapping:CS">
+        <EntityContainerMapping StorageEntityContainer="UpdaterModelStoreContainer" CdmEntityContainer="UpdaterEntities">
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="UpdaterModel.Customer">
+              <MappingFragment StoreEntitySet="Customer">
+                <ScalarProperty Name="LastUpdateFinishedWithErrors" ColumnName="LastUpdateFinishedWithErrors" />
+                <ScalarProperty Name="LastUpdateFinish" ColumnName="LastUpdateFinish" />
+                <ScalarProperty Name="LastUpdateStart" ColumnName="LastUpdateStart" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerGuid" ColumnName="CustomerGuid" />
+                <ScalarProperty Name="UpdaterKey" ColumnName="UpdaterKey" />
+                <ScalarProperty Name="AppVersion" ColumnName="AppVersion" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="LastUpdateCheck" ColumnName="LastUpdateCheck" />
+                <ScalarProperty Name="DatabaseVersion" ColumnName="DatabaseVersion" />
+                <ScalarProperty Name="ServerOS" ColumnName="ServerOS" />
+                <ScalarProperty Name="ServerMemory" ColumnName="ServerMemory" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="AppKey" ColumnName="AppKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Applications">
+            <EntityTypeMapping TypeName="UpdaterModel.Application">
+              <MappingFragment StoreEntitySet="Applications">
+                <ScalarProperty Name="ApplicationId" ColumnName="ApplicationId" />
+                <ScalarProperty Name="ApplicationName" ColumnName="ApplicationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2007/06/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram DiagramId="905928da039949f2b7e61ad37f9abc56" Name="Diagram1">
+        <EntityTypeShape EntityType="UpdaterModel.Customer" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="UpdaterModel.Application" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
